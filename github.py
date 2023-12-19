@@ -31,11 +31,10 @@ class Github:
             browser_option.add_argument('--disable-popup-blocking')
             return browser_option
         try:
-            browser_name = browser_name.strip().title()
 
 
             #automating and opening URL in headless browser
-            if browser_name == "Chrome":
+            if (browser_name := browser_name.strip().title()) == "Chrome":
                 browser_option = ChromeOptions()
                 browser_option = set_properties(browser_option)
                 driver = webdriver.Chrome(ChromeDriverManager().install(),options=browser_option) #chromedriver's path in first argument

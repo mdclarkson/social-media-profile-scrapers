@@ -44,8 +44,7 @@ class Medium:
         try:
             URL = "https://medium.com/_/graphql"
             payload = Medium.build_payload(username)
-            response = Medium.make_request(URL, payload)
-            if response:
+            if response := Medium.make_request(URL, payload):
                 return json.dumps(response)
             else:
                 print("Failed to make response!")

@@ -57,10 +57,9 @@ class Twitter:
             # generating URL according to the username
             guest_token = Twitter.find_x_guest_token()
             headers = Twitter.build_headers(guest_token, AUTHORIZATION_KEY)
-            response = Twitter.make_http_request(
+            if response := Twitter.make_http_request(
                 "https://api.twitter.com/1.1/users/show.json?screen_name={}".format(username),
-                headers=headers)
-            if response:
+                headers=headers):
               return json.dumps(response)
             else:
               print("Failed to make Request!")
